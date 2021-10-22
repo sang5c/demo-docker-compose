@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  t1:
+    container_name: t1
+    build:
+      context: .
+      dockerfile: ./dockerfile/go.Dockerfile
+    ports:
+      - "8090:3000"
+
+  t2:
+    container_name: t2
+    build:
+      context: .
+      dockerfile: ./dockerfile/ub.Dockerfile
+    links:
+      - t1:t1
+
+
